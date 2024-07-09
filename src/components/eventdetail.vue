@@ -1,6 +1,6 @@
 <template>
-  <div class="container mx-auto py-8">
-    <div class="flex justify-between items-center mb-4">
+  <div class="container mx-auto py-8" v-if="event">
+    <div class="flex justify-between items-center m-12">
       <h1 class="text-2xl font-bold">{{ event.name }}</h1>
       <router-link
         to="/"
@@ -12,22 +12,25 @@
         Back to Timeline
       </router-link>
     </div>
-    <img :src="event.image" class="w-full h-64 object-cover rounded-lg mb-4" alt="Event image" />
-    <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released on {{ event.date }}</time>
-    <p class="text-base font-normal text-gray-500 dark:text-gray-400">{{ event.text }}</p>
+  </div>
+  <div v-else>
+    <p>Loading event details...</p>
   </div>
 </template>
 
 <script>
+import { events } from "../data/events"; // Import data event
+
 export default {
   name: "EventDetail",
   data() {
     return {
-      event: {},
+      event: null,
     };
   },
   created() {
-    this.event = this.$route.params.event;
+    const eventId = this.$route.params.id;
+    this.event = events.find((event) => event.id === eventId);
   },
 };
 </script>

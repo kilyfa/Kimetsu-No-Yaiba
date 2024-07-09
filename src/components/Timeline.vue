@@ -17,7 +17,7 @@
           <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{{ event.text }}</p>
           <!-- Perbaikan disini -->
           <router-link
-            :to="{ name: 'EventDetail', params: { id: event.id } }"
+            :to="{ name: 'eventdetail', params: { id: event.id } }"
             class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left-circle-fill w-3.5 h-3.5 me-2.5" viewBox="0 0 16 16">
@@ -40,42 +40,14 @@
 </template>
 
 <script>
+import { events } from "../data/events";
 export default {
   name: "Timeline",
   data() {
     return {
       isModalOpen: false,
       modalImage: null,
-      events: [
-        {
-          id: 1,
-          date: "2024-01-01",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm6jnjgZRih4EvFeVwAX1VRB5fI_YXs23Q-g&s",
-          name: "Event 1",
-          text: "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
-        },
-        {
-          id: 2,
-          date: "2024-02-15",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqLSe0YxHCOtJikJKKAC5nm7NmlqwyXG1tWA&s",
-          name: "Event 2",
-          text: "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
-        },
-        {
-          id: 3,
-          date: "2024-03-20",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqLSe0YxHCOtJikJKKAC5nm7NmlqwyXG1tWA&s",
-          name: "Event 3",
-          text: "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
-        },
-        {
-          id: 4,
-          date: "2024-04-25",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqLSe0YxHCOtJikJKKAC5nm7NmlqwyXG1tWA&s",
-          name: "Event 4",
-          text: "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
-        },
-      ],
+      events,
     };
   },
   methods: {
